@@ -2,6 +2,8 @@ import argparse
 
 from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
+import numpy as np
+
 from keras.models import Sequential, Model
 from keras.layers import Input, Dense, concatenate
 from keras.optimizers import Adam
@@ -136,7 +138,7 @@ def main(model_param):
     parser = argparse.ArgumentParser()
     parser.add_argument('--batch_size', type=int, default=500,
                         help='Batch size for networks')
-    parser.add_argument('--epochs', type=int, default=50,
+    parser.add_argument('--epochs', type=int, default=30,
                         help='Epochs for the networks')
     parser.add_argument('--learning_rate', type=float, default=0.001,
                         help='Learning rate')
@@ -144,7 +146,6 @@ def main(model_param):
                         help='Input dimension for the generator.')
     args = parser.parse_args()
 
-    # select model
     if model_param == "deep":
         deep = Deep(args)
         deep.fit(x_train, y_train)
@@ -157,6 +158,14 @@ def main(model_param):
         wide_n_deep = WideAndDeep(args)
         wide_n_deep.fit(x_train, x_train, y_train)
         wide_n_deep.print_performance(x_test, x_test, y_test)
+
+        # prediction for individual
+        x_predict_test = x_test[np.newaxis, 0, :]
+        y_predict_test = y_test[0]
+        result = wide_n_deep.model.predict([x_predict_test, x_predict_test])
+        print('result predicted:', result[0][0])
+        print('result predicted:', round(result[0][0]))
+        print('result real:', y_predict_test)
 
 
 if __name__ == '__main__':
