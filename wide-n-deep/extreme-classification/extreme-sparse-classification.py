@@ -28,7 +28,9 @@ class Deep:
 
     def classifier(self):
         model = Sequential()
-        model.add(Dense(100, activation='relu', input_dim=self.input_dim))
+        model.add(Dense(5000, activation='relu', input_dim=self.input_dim))
+        model.add(Dense(2500, activation='relu'))
+        model.add(Dense(500, activation='relu'))
         model.add(Dense(50, activation='relu'))
         model.add(Dense(self.output_dim, activation='softmax'))
 
@@ -90,7 +92,9 @@ class WideAndDeep:
 
         # deep part
         deep_input = Input(shape=(self.input_dim,))
-        deep = Dense(100, activation='relu')(deep_input)
+        deep = Dense(5000, activation='relu')(deep_input)
+        deep = Dense(2500, activation='relu')(deep)
+        deep = Dense(500, activation='relu')(deep)
         deep = Dense(50, activation='relu')(deep)
 
         # concatenate : wide and deep
@@ -117,6 +121,31 @@ def main(model_param):
     y_train = y_train.toarray()
     x_test = x_test.toarray()
     y_test = y_test.toarray()
+
+    # extreme test
+    extreme_x_train = np.concatenate((x_train, x_train), axis=1)
+    extreme_x_train = np.concatenate((extreme_x_train, extreme_x_train), axis=1)
+    extreme_x_train = np.concatenate((extreme_x_train, extreme_x_train), axis=1)
+    extreme_x_test = np.concatenate((x_test, x_test), axis=1)
+    extreme_x_test = np.concatenate((extreme_x_test, extreme_x_test), axis=1)
+    extreme_x_test = np.concatenate((extreme_x_test, extreme_x_test), axis=1)
+    extreme_y_train = np.concatenate((y_train, y_train), axis=1)
+    extreme_y_train = np.concatenate((extreme_y_train, extreme_y_train), axis=1)
+    extreme_y_train = np.concatenate((extreme_y_train, extreme_y_train), axis=1)
+    extreme_y_train = np.concatenate((extreme_y_train, extreme_y_train), axis=1)
+    extreme_y_train = np.concatenate((extreme_y_train, extreme_y_train), axis=1)
+    extreme_y_train = np.concatenate((extreme_y_train, extreme_y_train), axis=1)
+    extreme_y_test = np.concatenate((y_test, y_test), axis=1)
+    extreme_y_test = np.concatenate((extreme_y_test, extreme_y_test), axis=1)
+    extreme_y_test = np.concatenate((extreme_y_test, extreme_y_test), axis=1)
+    extreme_y_test = np.concatenate((extreme_y_test, extreme_y_test), axis=1)
+    extreme_y_test = np.concatenate((extreme_y_test, extreme_y_test), axis=1)
+    extreme_y_test = np.concatenate((extreme_y_test, extreme_y_test), axis=1)
+
+    x_train = extreme_x_train
+    y_train = extreme_y_train
+    x_test = extreme_x_test
+    y_test = extreme_y_test
 
     # prepare hyper parameter
     parser = argparse.ArgumentParser()
@@ -158,4 +187,4 @@ def main(model_param):
 
 
 if __name__ == '__main__':
-    main('widendeep')
+    main('wide')
