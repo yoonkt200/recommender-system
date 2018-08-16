@@ -4,3 +4,4 @@
 *__pycache__
 *.ipynb_checkpoints
 *.bfg-1.13.0.jar
+*.txt
