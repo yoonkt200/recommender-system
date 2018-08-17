@@ -184,3 +184,7 @@ def main(model_param):
 
 if __name__ == '__main__':
     main('wide')
+
+    # X feature : (n, 1836) dim
+    # Y_feautre : (n, 40000) dim
+    # learning speed good.
