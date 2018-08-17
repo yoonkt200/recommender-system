@@ -123,13 +123,9 @@ def main(model_param):
     y_test = y_test.toarray()
 
     # extreme test
-    extreme_x_train = np.concatenate((x_train, x_train), axis=1)
-    extreme_x_train = np.concatenate((extreme_x_train, extreme_x_train), axis=1)
-    extreme_x_train = np.concatenate((extreme_x_train, extreme_x_train), axis=1)
-    extreme_x_test = np.concatenate((x_test, x_test), axis=1)
-    extreme_x_test = np.concatenate((extreme_x_test, extreme_x_test), axis=1)
-    extreme_x_test = np.concatenate((extreme_x_test, extreme_x_test), axis=1)
     extreme_y_train = np.concatenate((y_train, y_train), axis=1)
+    extreme_y_train = np.concatenate((extreme_y_train, extreme_y_train), axis=1)
+    extreme_y_train = np.concatenate((extreme_y_train, extreme_y_train), axis=1)
     extreme_y_train = np.concatenate((extreme_y_train, extreme_y_train), axis=1)
     extreme_y_train = np.concatenate((extreme_y_train, extreme_y_train), axis=1)
     extreme_y_train = np.concatenate((extreme_y_train, extreme_y_train), axis=1)
@@ -141,10 +137,10 @@ def main(model_param):
     extreme_y_test = np.concatenate((extreme_y_test, extreme_y_test), axis=1)
     extreme_y_test = np.concatenate((extreme_y_test, extreme_y_test), axis=1)
     extreme_y_test = np.concatenate((extreme_y_test, extreme_y_test), axis=1)
+    extreme_y_test = np.concatenate((extreme_y_test, extreme_y_test), axis=1)
+    extreme_y_test = np.concatenate((extreme_y_test, extreme_y_test), axis=1)
 
-    x_train = extreme_x_train
     y_train = extreme_y_train
-    x_test = extreme_x_test
     y_test = extreme_y_test
 
     # prepare hyper parameter
