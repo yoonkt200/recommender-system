@@ -12,7 +12,7 @@ This repository provides a set of available examples in recommender system. And 
 * [Pending..](https://github.com/yoonkt200/recommender-system/tree/master/implicit/SVD/main.py)
 
 ##### 2. Linear Combination Learning (point-wise ranker)
-* [Pending..](https://github.com/yoonkt200/recommender-system/tree/master/implicit/SVD/main.py)
+* [Factorization Machine](https://github.com/yoonkt200/recommender-system/tree/master/ranker/FM/main.py)
 
 ##### 3. Utilities
 * [Pending..](https://github.com/yoonkt200/recommender-system/tree/master/implicit/SVD/main.py)
