@@ -8,7 +8,7 @@ import numpy as np
 from sklearn.metrics import roc_auc_score
 
 
-class FMClassifier():
+class FMClassifier:
     """
     This Class is implementation of this paper : https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf
     Just a example of factorization_machine Algorithm, not for production.
